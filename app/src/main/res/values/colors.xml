@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="newColor">#C5E0FF</color>
+    <color name="normalbutton">#E7640F</color>
+    <color name="highPressed">#179829</color>
+    <color name="normalGreen">#AFB12C</color>
+    <color name="highPressedgreen">#112203</color>
+
+</resources>
