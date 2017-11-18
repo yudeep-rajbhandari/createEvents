@@ -150,15 +150,15 @@ public class Notes{
 //        byte[] buffer = new byte[1024];
 //        int length;
 //        while ((length = fis.read(buffer))>0){
-//            output.write(buffer, 0, length);
+//            output.write(buffer, 0, length);genymotion khola ta
 //        }
-//
+//              chaldai cha haina ta?ekdum aba k k milaune copy paste hanera milaau
 //        // Close the streams
 //        output.flush();
 //        output.close();
 //        fis.close();
 //
-//        return true;
+//        return true; k ma run garya ho?
 //
 //    }
     //    public List<String> getAllLabels(){

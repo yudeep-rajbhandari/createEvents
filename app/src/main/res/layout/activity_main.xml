@@ -15,6 +15,14 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.hornet.nepalidateconverter.MainActivity">
 
+        <Button
+            android:text="schedule"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:id="@+id/schedule"
+            android:theme="@style/schedule"
+            />
+
         <EditText
             style="@style/FullWidthEditText1"
 
@@ -24,7 +32,9 @@
             android:hint="Place"
             android:ems="10"
             android:id="@+id/editText2"
-             />
+            android:layout_below="@+id/schedule"
+            android:layout_marginTop="10dp"
+            />
 
         <EditText
             style="@style/FullWidthEditText1"
@@ -78,12 +88,7 @@
             android:drawablePadding="20dp"
             />
 
-        <Button
-            android:text="schedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/schedule"
-            android:layout_weight="1" />
+
 
 
 

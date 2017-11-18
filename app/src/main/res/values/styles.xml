@@ -27,5 +27,9 @@
         <item name="colorControlHighlight">@color/highPressedgreen</item>
         <item name="colorButtonNormal">@color/normalGreen</item>
     </style>
+    <style name="schedule" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#0d4954</item>
+        <item name="colorButtonNormal">#2c93a5</item>
+    </style>
 
 </resources>

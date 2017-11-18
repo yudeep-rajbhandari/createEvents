@@ -50,7 +50,7 @@ public class NotesAdapter extends ArrayAdapter {
             LayoutInflater layoutInflater=(LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=layoutInflater.inflate(R.layout.adapterview_layout,parent,false);
             bookshow =new Book();
-            bookshow.date=(TextView)convertView.findViewById(R.id.textView);
+           // bookshow.date=(TextView)convertView.findViewById(R.id.textView);
             //bookshow.bookpdf=(TextView)convertView.findViewById(R.id.pdf1);
             bookshow.Place=(TextView)convertView.findViewById(R.id.textView3);
             bookshow.Person=(TextView)convertView.findViewById(R.id.textView2);
@@ -73,7 +73,7 @@ public class NotesAdapter extends ArrayAdapter {
 //        String name=bookdisplay.getBookName();
 
        // bookshow..setText(name);
-        bookshow.date.setText(notes.getDate());
+       // bookshow.date.setText(notes.getDate());
         bookshow.Person.setText(notes.getPerson());
         bookshow.Place.setText(notes.getPlace());
         bookshow.Task.setText(notes.getTask());

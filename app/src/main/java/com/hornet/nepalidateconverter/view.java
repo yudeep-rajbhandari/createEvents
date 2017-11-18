@@ -2,6 +2,7 @@ package com.hornet.nepalidateconverter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 import com.hornet.dateconverter.DateConverter;
 import com.hornet.dateconverter.DatePicker.DatePickerDialog;
@@ -22,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+
 public class view extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     ListView listView;
    NotesAdapter notesAdapter;
@@ -29,7 +34,8 @@ public class view extends AppCompatActivity implements View.OnClickListener, Dat
     Button datePicker;
     String date1;
     String send_date;
-
+    TextView date12;
+    FloatingActionButton fab;
 
 
 
@@ -59,16 +65,42 @@ public class view extends AppCompatActivity implements View.OnClickListener, Dat
         int day=outputOfConversion.getDay();
         String nepalimonth=getResources().getString( DateConverter.getNepaliMonth(month));
         String date2 =  day + " " + getResources().getString( DateConverter.getNepaliMonth(month)) + " " + year;
+        TextView date12=(TextView)findViewById(R.id.textView9);
 
         System.out.println(date2);
         notesAdapter = new NotesAdapter(view.this, R.layout.activity_view);
         listView.setAdapter(notesAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Start an alpha animation for clicked item
+                Animation animation1 = new AlphaAnimation(0.5f, 1.0f);
+                animation1.setDuration(2000);
+                view.startAnimation(animation1);
+            }
+        });
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 //Toast.makeText(view.this,"want to delete",Toast.LENGTH_LONG).show();
+
+                Animation animation1 = new AlphaAnimation(0.0f, 1.0f);
+                animation1.setDuration(2000);
+               //
+                animation1.setStartOffset(00);
+                view.startAnimation(animation1);
+
                 System.out.println("<<<<<<<<<<<<<<<<<<,");
                 AlertDialog.Builder adb=new AlertDialog.Builder(view.this);
                 adb.setTitle("Delete?");
@@ -121,12 +153,14 @@ public class view extends AppCompatActivity implements View.OnClickListener, Dat
         //String reqsubjectcode=spinner.getSelectedItem().toString();
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
         ArrayList<DatabaseHelper.Notes> notelist = db.getNotes(date2);
+        date12.setText(date2);
 
         for (DatabaseHelper.Notes notes : notelist) {
 
             getnotes = new notesgetter(notes.ID,notes.date, notes.Person, notes.Place, notes.Task);
 
             notesAdapter.add(getnotes);
+
         }
 
 
@@ -134,8 +168,7 @@ public class view extends AppCompatActivity implements View.OnClickListener, Dat
 
 
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 
@@ -180,6 +213,8 @@ public class view extends AppCompatActivity implements View.OnClickListener, Dat
         //String reqsubjectcode=spinner.getSelectedItem().toString();
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
         ArrayList<DatabaseHelper.Notes> notelist = db.getNotes(send_date);
+        TextView date12=(TextView)findViewById(R.id.textView9);
+        date12.setText(send_date);
 
         for (DatabaseHelper.Notes notes : notelist) {
 
@@ -191,13 +226,5 @@ public class view extends AppCompatActivity implements View.OnClickListener, Dat
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id==android.R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
 }
